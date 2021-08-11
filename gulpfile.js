@@ -4,16 +4,18 @@ const stylus = require('gulp-stylus')
 const sass = require('gulp-sass')(require('sass'))
 const rename = require('gulp-rename')
 const cleanCSS = require('gulp-clean-css')
+const ts = require('gulp-typescript')
+const coffee = require('gulp-coffee')
 const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
 const concat = require('gulp-concat')
 const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
-const htmlmin = require('gulp-htmlmin');
+const htmlmin = require('gulp-htmlmin')
 const size = require('gulp-size')
-const gulppug = require('gulp-pug');
-const newer = require('gulp-newer');
+const gulppug = require('gulp-pug')
+const newer = require('gulp-newer')
 const browsersync = require('browser-sync').create()
 const del = require('del')
 
@@ -27,11 +29,11 @@ const paths = {
     dest: 'dist/'
   },
   styles: {
-    src: ['src/styles/**/*.sass', 'src/styles/**/*.scss', 'src/styles/**/*.styl', 'src/styles/**/*.less'],
+    src: ['src/styles/**/*.sass', 'src/styles/**/*.scss', 'src/styles/**/*.styl', 'src/styles/**/*.less', 'src/styles/**/*.css'],
     dest: 'dist/css/'
   },
   scripts: {
-    src: 'src/scripts/**/*.js',
+    src: ['src/scripts/**/*.coffee', 'src/scripts/**/*.ts', 'src/scripts/**/*.js'],
     dest: 'dist/js/'
   },
   images: {
@@ -91,6 +93,13 @@ function styles() {
 function scripts() {
   return gulp.src(paths.scripts.src)
   .pipe(sourcemaps.init())
+  .pipe(coffee({bare: true}))
+  /*
+  .pipe(ts({
+    noImplicitAny: true,
+    outFile: 'main.min.js'
+  }))
+  */
   .pipe(babel({
     presets: ['@babel/env']
   }))
