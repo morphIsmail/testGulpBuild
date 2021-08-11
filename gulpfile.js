@@ -8,9 +8,14 @@ const concat = require('gulp-concat')
 const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
+const htmlmin = require('gulp-htmlmin');
 const del = require('del')
 
 const paths = {
+  html: {
+    src: 'src/*.html',
+    dest: 'dist'
+  },
   styles: {
     src: 'src/styles/**/*.less',
     dest: 'dist/css/'
@@ -27,6 +32,12 @@ const paths = {
 
 function clean() {
   return del(['dist'])
+}
+
+function html() {
+  return gulp.src(paths.html.src)
+  .pipe(htmlmin({ collapseWhitespace: true }))
+  .pipe(gulp.dest(paths.html.dest));
 }
 
 function styles() {
@@ -72,10 +83,11 @@ function watch() {
   gulp.watch(paths.scripts.src, scripts)
 }
 
-const build = gulp.series(clean, gulp.parallel(styles, scripts, img), watch)
+const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch)
 
 exports.clean = clean
 exports.img = img
+exports.html = html
 exports.styles = styles
 exports.scripts = scripts
 exports.watch = watch

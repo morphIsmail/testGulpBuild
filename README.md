@@ -2,9 +2,10 @@
 С помощью этих файлов вы сможете быстро настроить сборку вашего проекта на Gulp.
 
 ## Структура каталогов для размещения файлов стилей и скриптов:  
+>./src/*.html  
 >./src/styles/\*\*/\*.less   
 >./src/scripts/\*\*/\*.js   
->./src/img/
+>./src/img/  
 
 ## Инструкция:  
 1. Скачать все файлы в любую директорию   
@@ -28,6 +29,7 @@
 [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) Карта строк кода для инструментов разработчика  
 [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) Автоматическое добавление префиксов в CSS  
 [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) Сжатие изображений   
+[gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Минификация HTML файлов  
 
 ### Автору на кофе
 
