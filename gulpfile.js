@@ -11,6 +11,7 @@ const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin');
 const size = require('gulp-size')
 const newer = require('gulp-newer');
+const browsersync = require('browser-sync').create()
 const del = require('del')
 
 const paths = {
@@ -27,7 +28,7 @@ const paths = {
     dest: 'dist/js/'
   },
   images: {
-    src: 'src/img/*',
+    src: 'src/img/**',
     dest: 'dist/img'
   }
 }
@@ -42,7 +43,8 @@ function html() {
   .pipe(size({
     showFiles:true
   }))
-  .pipe(gulp.dest(paths.html.dest));
+  .pipe(gulp.dest(paths.html.dest))
+  .pipe(browsersync.stream())
 }
 
 function styles() {
@@ -64,6 +66,7 @@ function styles() {
     showFiles:true
   }))
   .pipe(gulp.dest(paths.styles.dest))
+  .pipe(browsersync.stream())
 }
 
 function scripts() {
@@ -79,6 +82,7 @@ function scripts() {
     showFiles:true
   }))
   .pipe(gulp.dest(paths.scripts.dest))
+  .pipe(browsersync.stream())
 }
 
 function img() {
@@ -94,8 +98,16 @@ function img() {
 }
 
 function watch() {
+  browsersync.init({
+    server: {
+        baseDir: "./dist"
+    }
+  })
+  gulp.watch(paths.html.dest).on('change', browsersync.reload)
+  gulp.watch(paths.html.src, html)
   gulp.watch(paths.styles.src, styles)
   gulp.watch(paths.scripts.src, scripts)
+  gulp.watch(paths.images.src, img)
 }
 
 const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch)

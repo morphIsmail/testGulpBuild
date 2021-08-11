@@ -32,6 +32,7 @@
 [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Минификация HTML файлов  
 [gulp-size](https://www.npmjs.com/package/gulp-size) Отображение информации о размерах файлов в терминале
 [gulp-newer](https://www.npmjs.com/package/gulp-newer) Отслеживание только новых файлов
+[browser-sync](https://browsersync.io/docs/gulp) Автоматическое обновление сайта при изменении файлов
 
 ### Автору на кофе
 
