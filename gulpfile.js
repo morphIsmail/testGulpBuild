@@ -10,6 +10,7 @@ const autoprefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin');
 const size = require('gulp-size')
+const newer = require('gulp-newer');
 const del = require('del')
 
 const paths = {
@@ -32,7 +33,7 @@ const paths = {
 }
 
 function clean() {
-  return del(['dist'])
+  return del(['dist/*', '!dist/img'])
 }
 
 function html() {
@@ -82,6 +83,7 @@ function scripts() {
 
 function img() {
   return gulp.src(paths.images.src)
+  .pipe(newer(paths.images.dest))
   .pipe(imagemin({
     progressive: true
   }))
