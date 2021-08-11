@@ -1,3 +1,4 @@
+// Импорт пакетов
 const gulp = require('gulp')
 const less = require('gulp-less')
 const stylus = require('gulp-stylus')
@@ -19,13 +20,10 @@ const newer = require('gulp-newer')
 const browsersync = require('browser-sync').create()
 const del = require('del')
 
+// Пути исходных файлов src и пути к результирующим файлам dest
 const paths = {
-  pug: {
-    src: 'src/*.pug',
-    dest: 'dist/'
-  },
   html: {
-    src: 'src/*.html',
+    src: ['src/*.html', 'src/*.pug'],
     dest: 'dist/'
   },
   styles: {
@@ -42,22 +40,15 @@ const paths = {
   }
 }
 
+// Очистить каталог dist, удалить все кроме изображений
 function clean() {
   return del(['dist/*', '!dist/img'])
 }
 
-function pug() {
-  return gulp.src(paths.pug.src)
-  .pipe(gulppug())
-  .pipe(size({
-    showFiles:true
-  }))
-  .pipe(gulp.dest(paths.pug.dest))
-  .pipe(browsersync.stream())
-}
-
+// Обработка html и pug
 function html() {
   return gulp.src(paths.html.src)
+  //.pipe(gulppug())
   .pipe(htmlmin({ collapseWhitespace: true }))
   .pipe(size({
     showFiles:true
@@ -66,6 +57,7 @@ function html() {
   .pipe(browsersync.stream())
 }
 
+// Обработка препроцессоров стилей
 function styles() {
   return gulp.src(paths.styles.src)
   .pipe(sourcemaps.init())
@@ -90,10 +82,11 @@ function styles() {
   .pipe(browsersync.stream())
 }
 
+// Обработка Java Script, Type Script и Coffee Script
 function scripts() {
   return gulp.src(paths.scripts.src)
   .pipe(sourcemaps.init())
-  .pipe(coffee({bare: true}))
+  //.pipe(coffee({bare: true}))
   /*
   .pipe(ts({
     noImplicitAny: true,
@@ -113,6 +106,7 @@ function scripts() {
   .pipe(browsersync.stream())
 }
 
+// Сжатие изображений
 function img() {
   return gulp.src(paths.images.src)
   .pipe(newer(paths.images.dest))
@@ -125,6 +119,7 @@ function img() {
   .pipe(gulp.dest(paths.images.dest))
 }
 
+// Отслеживание изменений в файлах и запуск лайв сервера
 function watch() {
   browsersync.init({
     server: {
@@ -138,14 +133,14 @@ function watch() {
   gulp.watch(paths.images.src, img)
 }
 
-const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch)
-
+// Таски для ручного запуска с помощью gulp clean, gulp html и т.д.
 exports.clean = clean
-exports.img = img
-exports.pug = pug
+
 exports.html = html
 exports.styles = styles
 exports.scripts = scripts
+exports.img = img
 exports.watch = watch
-exports.build = build
-exports.default = build
+
+// Таск, который выполняется по команде gulp
+exports.default = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch)
