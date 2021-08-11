@@ -30,6 +30,7 @@
 [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) Автоматическое добавление префиксов в CSS  
 [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) Сжатие изображений   
 [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Минификация HTML файлов  
+[gulp-size](https://www.npmjs.com/package/gulp-size) Отображение информации о размерах файлов в терминале
 
 ### Автору на кофе
 
