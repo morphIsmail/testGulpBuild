@@ -3,7 +3,8 @@
 
 ## Структура каталогов для размещения файлов стилей и скриптов:  
 >./src/styles/\*\*/\*.less   
->./src/scripts/\*\*/\*.js
+>./src/scripts/\*\*/\*.js   
+>./src/img/
 
 ## Инструкция:  
 1. Скачать все файлы в любую директорию   
@@ -23,7 +24,10 @@
 [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) Сжатие и оптимизация Java Script кода  
 [gulp-rename](https://www.npmjs.com/package/gulp-rename) Переименовывает файлы  
 [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css) Минификация и оптимизация CSS файлов   
-[del](https://www.npmjs.com/package/del) Удаление каталогов и файлов  
+[del](https://www.npmjs.com/package/del) Удаление каталогов и файлов 
+[gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) Карта строк кода для инструментов разработчика  
+[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) Автоматическое добавление префиксов в CSS  
+[gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) Сжатие изображений   
 
 ### Автору на кофе
 
