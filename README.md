@@ -33,6 +33,7 @@
 [gulp-size](https://www.npmjs.com/package/gulp-size) Отображение информации о размерах файлов в терминале
 [gulp-newer](https://www.npmjs.com/package/gulp-newer) Отслеживание только новых файлов
 [browser-sync](https://browsersync.io/docs/gulp) Автоматическое обновление сайта при изменении файлов
+[gulp-pug](https://www.npmjs.com/package/gulp-pug) Pug препроцессор HTML кода
 
 ### Автору на кофе
 

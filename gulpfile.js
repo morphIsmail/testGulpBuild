@@ -10,14 +10,19 @@ const autoprefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin');
 const size = require('gulp-size')
+const gulppug = require('gulp-pug');
 const newer = require('gulp-newer');
 const browsersync = require('browser-sync').create()
 const del = require('del')
 
 const paths = {
+  pug: {
+    src: 'src/*.pug',
+    dest: 'dist/'
+  },
   html: {
     src: 'src/*.html',
-    dest: 'dist'
+    dest: 'dist/'
   },
   styles: {
     src: 'src/styles/**/*.less',
@@ -29,12 +34,22 @@ const paths = {
   },
   images: {
     src: 'src/img/**',
-    dest: 'dist/img'
+    dest: 'dist/img/'
   }
 }
 
 function clean() {
   return del(['dist/*', '!dist/img'])
+}
+
+function pug() {
+  return gulp.src(paths.pug.src)
+  .pipe(gulppug())
+  .pipe(size({
+    showFiles:true
+  }))
+  .pipe(gulp.dest(paths.pug.dest))
+  .pipe(browsersync.stream())
 }
 
 function html() {
@@ -114,6 +129,7 @@ const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watc
 
 exports.clean = clean
 exports.img = img
+exports.pug = pug
 exports.html = html
 exports.styles = styles
 exports.scripts = scripts
