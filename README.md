@@ -1,25 +1,46 @@
-# Простая сборка проекта на Gulp 4
-С помощью этих файлов вы сможете быстро настроить сборку вашего проекта на Gulp и писать код используя HTML, Pug, CSS, SCSS, SASS, Less, Stylus, Java Script, Babel, Type Script, Coffee Script. Так же доступна минификация HTML, CSS и JS, сжатие изображений, добавление CSS префиксов для разных браузеров, конкатенация файлов, карты sourcemaps для CSS и JS и запуск лайв сервера с автоматическим обновлением сайта при изменении любых файлов.
+# Сборка проекта на Gulp 4
+Быстро настроить сборку вашего проекта на Gulp и писать код на:
+- HTML, PUG
+- CSS, SCSS, SASS, LESS, STYLUS
+- Java Script, Type Script, Coffee Script
 
-## Структура проекта:  
->./src/\*.html, \*.pug  
->./src/styles/\*\*/\*.less, \*.sass, \*.scss, \*.styl, \*.css   
->./src/scripts/\*\*/\*.js, \*.ts, \*.coffee   
->./src/img/\*\*/\*.jpg, \*.png  
+## Функционал сборки
+- компиляция препроцессора PUG
+- минификация HTML
+- компиляция препроцессоров LESS, SASS, STYLUS
+- минификация CSS
+- автоматическое добавление префиксов CSS
+- транспиляция языков Type Script и Coffee Script
+- преобразования кода ECMAScript 2015 + в обратно совместимую версию JavaScript с помощью Babel
+- минификация JavaScript
+- объединение нескольких файлов JavaScript в один
+- сжатие изображений
+- отслеживание новых изображений, которые еще не были сжаты
+- отслеживание изменений в файлах и автоматический запуск повторной обработки
+- генерация sourcemaps
+- отображение размеров файлов в терминале
+- локальный сервер с автоматическим обновлением страницы при изменении файлов
+
+## Input
+|| HTML | Styles | Scripts | Images |
+|:---|:------:|:-----:|:----:|:-----:|
+| **Каталог** | src/ | src/styles/ | src/scripts/ | src/img/ |
+| **Расширение** | .html, .pug | .css, .sass, .scss, .less, .styl | .js, .ts, .coffee | .jpg, .png, .gif |
+
+## Output
+|| HTML | CSS | JavaScript | Images |
+|:---|:------:|:-----:|:----:|:-----:|
+| **Путь** | dist/ | dist/css/style.min.css | dist/js/main.min.js | dist/img/ |
 
 ## Зупуск:  
 1. Скачать все файлы проекта  
 2. В терминале перейти в каталог проекта  
 3. Выполнить команду: npm i (должен быть установлен node.js)  
-4. Создать струтуру каталогов и файлов
+4. Создать каталоги и файлы
 5. Выполнить команду: gulp (запуск таска default)  
 6. Писать свой код и наслаждаться автоматической сборкой проекта. 
 
-## Ссылки
-[Сборка проекта на Gulp 4](https://github.com/morphIsmail/gulp_build_3)  
-[Документация Gulp на русском языке](https://webdesign-master.ru/blog/docs/gulp-documentation.html)
-
-## Установленные NPM пакеты 
+## Используемые NPM пакеты
 [gulp](https://www.npmjs.com/package/gulp) Сборщик Gulp  
 [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Минификация HTML файлов  
 [gulp-pug](https://www.npmjs.com/package/gulp-pug) Pug препроцессор HTML кода  
@@ -46,16 +67,15 @@
 [browser-sync](https://browsersync.io/docs/gulp) Автоматическое обновление сайта при изменении файлов  
 
 ### Автору на кофе
+![Сбер VISA](https://img.shields.io/badge/Card-4274320032331582-333?style=for-the-badge&logo=visa&labelColor=08a652)
+[![Yoomoney](https://img.shields.io/badge/-Yoomoney-7f2bfd?style=for-the-badge)](https://yasobe.ru/na/itdoctor)
+[![PayPal](https://img.shields.io/badge/-PayPal-0070ba?style=for-the-badge&logo=PayPal&logoColor=FF0000)](https://paypal.me/itdoctorstudio)
 
-Сбер VISA: 4274 3200 3233 1582  
-[Yoomoney](https://yasobe.ru/na/itdoctor)  
-[PayPal](https://paypal.me/itdoctorstudio)
-
-### Контакты ITDoctor
-
-[YouTube](https://www.youtube.com/c/ITDoctor)  
-[Telegram](https://t.me/itdoctorstudio) и бот [@itdoctorNavigatorBot](https://t.me/itdoctorNavigatorBot?start)  
-[Курсы на Udemy](https://www.udemy.com/user/useinov-ismail-asanovich/)  
-[GitHub](https://github.com/morphIsmail)  
-[VK](https://vk.com/itdoctorstudio)  
-[Instagram](https://instagram.com/ismail_asanovich)
+### Контакты
+[![YouTube](https://img.shields.io/badge/-YouTube-333?style=for-the-badge&logo=YouTube&logoColor=FF0000)](https://www.youtube.com/c/ITDoctor)
+[![Курсы на Udemy](https://img.shields.io/badge/-Udemy-333?style=for-the-badge&logo=Udemy&logoColor=fff)](https://www.udemy.com/user/useinov-ismail-asanovich/)
+[![Telegram](https://img.shields.io/badge/-Telegram-333?style=for-the-badge&logo=telegram&logoColor=27A0D9)](https://t.me/itdoctorstudio)
+[![Bot](https://img.shields.io/badge/-Bot-333?style=for-the-badge)](https://t.me/itdoctorNavigatorBot?start)
+[![Instagram](https://img.shields.io/badge/-Instagram-333?style=for-the-badge&logo=instagram&logoColor=B4068E)](https://instagram.com/ismail_asanovich)
+[![VK](https://img.shields.io/badge/-VK-333?style=for-the-badge&logo=Vk&logoColor=27A0D9)](https://vk.com/itdoctorstudio)
+[![GitHub](https://img.shields.io/badge/-GitHub-333?style=for-the-badge&logo=GitHub&logoColor=fff)](https://github.com/morphIsmail)
